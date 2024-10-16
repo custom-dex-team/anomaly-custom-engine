@@ -534,7 +534,7 @@ void updateDiscordPresence()
 
 void Init_Discord()
 {
-	auto result = discord::Core::Create(477910171964801060, DiscordCreateFlags_NoRequireDiscord, &discord_core);
+	auto result = discord::Core::Create(1296074342341279877, DiscordCreateFlags_NoRequireDiscord, &discord_core);
 	
 	if (result != discord::Result::Ok)
 	{
