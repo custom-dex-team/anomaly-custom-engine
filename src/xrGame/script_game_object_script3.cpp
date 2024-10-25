@@ -175,6 +175,10 @@ class_<CScriptGameObject>& script_register_game_object2(class_<CScriptGameObject
 		.def("enable_torch", &CScriptGameObject::enable_torch)
 		.def("torch_enabled", &CScriptGameObject::torch_enabled)
 		.def("attachable_item_load_attach", &CScriptGameObject::attachable_item_load_attach)
+
+		// VodoXleb: add force update for torch for npc
+		.def("update_torch", &CScriptGameObject::update_torch)
+
 		.def("weapon_strapped", &CScriptGameObject::weapon_strapped)
 		.def("weapon_unstrapped", &CScriptGameObject::weapon_unstrapped)
 

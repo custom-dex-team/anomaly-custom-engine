@@ -346,7 +346,7 @@ public:
 	bool inv_box_can_take(bool status);
 	bool inv_box_can_take_status();
 
-	//передача порции информации InventoryOwner
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ InventoryOwner
 	bool GiveInfoPortion(LPCSTR info_id);
 	bool DisableInfoPortion(LPCSTR info_id);
 	void GiveGameNews(LPCSTR caption, LPCSTR news, LPCSTR texture_name, int delay, int show_time);
@@ -356,10 +356,10 @@ public:
 	{
 	};
 	void AddIconedTalkMessage(LPCSTR caption, LPCSTR text, LPCSTR texture_name, LPCSTR templ_name);
-	//предикаты наличия/отсутствия порции информации у персонажа
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	bool HasInfo(LPCSTR info_id);
 	bool DontHasInfo(LPCSTR info_id);
-	//работа с заданиями
+	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	ETaskState GetGameTaskState(LPCSTR task_id);
 	void SetGameTaskState(ETaskState state, LPCSTR task_id);
 	void GiveTaskToActor(CGameTask* t, u32 dt, bool bCheckExisting, u32 t_timer);
@@ -657,6 +657,9 @@ public:
 	bool night_vision_enabled() const;
 	void enable_torch(bool value);
 	bool torch_enabled() const;
+
+	// VodoXleb: add force update for torch for npc
+	void update_torch();
 
 	void attachable_item_load_attach(LPCSTR section);
 	// CustomZone
