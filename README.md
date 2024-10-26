@@ -184,6 +184,9 @@ How to compile exes:
 6. For successful compilation, **the latest build tools with MFC and ATL libraries is required**
 
 ## Changelog
+**2024.10.26**
+* VodoXleb: Add torch force update function to use in Lua (https://github.com/themrdemonized/xray-monolith/pull/96)
+
 **2024.10.22**
 * `aaa_sound_object_patch.script` file: Rework of the `sound_object` class to have caching of playing sounds, fixing the issue of abrupt cutting of sounds due to LuaJIT GC
 
