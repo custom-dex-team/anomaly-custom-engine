@@ -1367,6 +1367,19 @@ bool CScriptGameObject::torch_enabled() const
 	return (torch->torch_active());
 }
 
+// VodoXleb: add force update for torch for npc
+void CScriptGameObject::update_torch()
+{
+	CTorch* torch = smart_cast<CTorch*>(&object());
+	if (!torch)
+	{
+		ai().script_engine().script_log(ScriptStorage::eLuaMessageTypeError,
+			"CTorch : cannot access class member enable_torch!");
+		return;
+	}
+	torch->UpdateCL();
+}
+
 void CScriptGameObject::attachable_item_load_attach(LPCSTR section)
 {
 	CAttachableItem* attachable_item = smart_cast<CAttachableItem*>(&object());
