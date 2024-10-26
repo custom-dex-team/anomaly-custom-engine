@@ -658,6 +658,9 @@ public:
 	void enable_torch(bool value);
 	bool torch_enabled() const;
 
+	// VodoXleb: add force update for torch for npc
+	void update_torch();
+
 	void attachable_item_load_attach(LPCSTR section);
 	// CustomZone
 	void EnableAnomaly();
