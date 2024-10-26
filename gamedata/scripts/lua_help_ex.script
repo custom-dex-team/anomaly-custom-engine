@@ -351,6 +351,9 @@
 
         function set_bone_visible(u16 id, bool bVisibility, bool bRecursive, bool bHud)
         function set_bone_visible(string bone_name, bool bVisibility, bool bRecursive, bool bHud)
+
+        // Torch
+        function update_torch()
     }
 
     class CArtefact : CGameObject {
