@@ -281,6 +281,13 @@ function ActorMenu_on_item_after_move(npc_id, obj, mode, bag_from)
     end
 end
 
+-- explosive item explosion callback
+AddScriptCallback("explosive_item_on_explode")
+_G.CExplosiveItem__OnExplode = function(obj)
+	SendScriptCallback("explosive_item_on_explode", obj)
+	--printf("barrel exploded")
+end
+
 function on_game_start()
 	RegisterScriptCallback("ActorMenu_on_item_after_move", ActorMenu_on_item_after_move)
 	RegisterScriptCallback("anomaly_on_before_activate", anomaly_on_before_activate)
