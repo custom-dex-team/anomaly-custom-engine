@@ -184,6 +184,9 @@ How to compile exes:
 6. For successful compilation, **the latest build tools with MFC and ATL libraries is required**
 
 ## Changelog
+**2024.10.28**
+* VodoXleb: Add explosive_item_on_explode callback (https://github.com/themrdemonized/xray-monolith/pull/97/files)
+
 **2024.10.26**
 * VodoXleb: Add torch force update function to use in Lua (https://github.com/themrdemonized/xray-monolith/pull/96)
 
