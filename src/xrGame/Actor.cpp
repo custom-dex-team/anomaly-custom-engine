@@ -1293,8 +1293,7 @@ void CActor::UpdateCL()
 			{
 				snprintf(discord_gameinfo.level_name, 128, xr_ToUTF8(*CStringTable().translate(g_pGameLevel->name())));
 				srand(time(0));
-				int level_icon_id = rand() % 3 + 1;
-				discord_gameinfo.level_icon_index = level_icon_id;
+				discord_gameinfo.level_icon_index = 1;
 				discord_gameinfo.level = g_pGameLevel->name().c_str();
 			}
 

@@ -520,10 +520,10 @@ void updateDiscordPresence()
 		}
 
 		// Level Icon
-		if (discord_gameinfo.level && discord_gameinfo.level_icon_index)
+		if (discord_gameinfo.level)
 		{
 			char icon_buffer[32];
-			snprintf(icon_buffer, 32, "%s_%i", discord_gameinfo.level, discord_gameinfo.level_icon_index);
+			snprintf(icon_buffer, 32, "%s", discord_gameinfo.level);
 			discordPresence.GetAssets().SetLargeImage(icon_buffer);
 		}
 	}
