@@ -361,16 +361,25 @@ void CWeapon::UpdateUIScope()
 	{
 		if (0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonScope) && m_scopes.size())
 		{
-			scope_tex_name = pSettings->r_string(GetScopeName(), "scope_texture");
+			if (!m_primary_scope_tex_name) {
+				m_primary_scope_tex_name = pSettings->r_string(GetScopeName(), "scope_texture");
+			}
+			scope_tex_name = m_primary_scope_tex_name;
 		}
 		else
 		{
-			scope_tex_name = READ_IF_EXISTS(pSettings, r_string, cNameSect(), "scope_texture", NULL);
+			if (!m_primary_scope_tex_name) {
+				m_primary_scope_tex_name = READ_IF_EXISTS(pSettings, r_string, cNameSect(), "scope_texture", NULL);
+			}
+			scope_tex_name = m_primary_scope_tex_name;
 		}
 	}
 	else if (m_zoomtype == 1)
 	{
-		scope_tex_name = READ_IF_EXISTS(pSettings, r_string, cNameSect(), "scope_texture_alt", NULL);
+		if (!m_secondary_scope_tex_name) {
+			m_secondary_scope_tex_name = READ_IF_EXISTS(pSettings, r_string, cNameSect(), "scope_texture_alt", NULL);
+		}
+		scope_tex_name = m_secondary_scope_tex_name;
 	}
 
 	if (!g_dedicated_server)

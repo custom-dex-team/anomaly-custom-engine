@@ -522,6 +522,8 @@ public:
 
 	void SetUIScope(LPCSTR scope_texture);
 	shared_str m_scope_tex_name;
+	shared_str m_primary_scope_tex_name;
+	shared_str m_secondary_scope_tex_name;
 
 protected:
 	virtual void UpdateFireDependencies_internal();
