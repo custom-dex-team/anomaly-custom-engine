@@ -48,6 +48,8 @@
 		viewport_near [0.0, 1.0] // Adjust the camera near value
 
         print_bone_warnings // Print warnings when using bone_position and bone_direction functions and encounter invalid bones
+
+        poltergeist_spawn_corpse_on_death // Poltergeists spawn corpses on death
     }
 
     lua extensions {
