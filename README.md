@@ -184,6 +184,9 @@ How to compile exes:
 6. For successful compilation, **the latest build tools with MFC and ATL libraries is required**
 
 ## Changelog
+**2024.11.02**
+* Possibility to define `scope_texture` and `scope_texture_alt` in weapon upgrades
+
 **2024.11.01**
 * Poltergeists will always spawn visible corpse upon death. Previously flame ones and pseudogeists would spawn only collision mesh without visible mesh. To restore old behaviour, type `poltergeist_spawn_corpse_on_death 0` in console  
 
