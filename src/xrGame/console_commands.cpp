@@ -137,6 +137,7 @@ extern float f_Freelook_cam_limit;
 extern int MOUSEBUFFERSIZE;
 extern int KEYBOARDBUFFERSIZE;
 extern BOOL print_bone_warnings;
+extern BOOL poltergeist_spawn_corpse_on_death;
 
 ENGINE_API extern float g_console_sensitive;
 
@@ -2801,6 +2802,9 @@ void CCC_RegisterCommands()
 
 	// Print warnings when using bone_position and bone_direction functions and encounter invalid bones
 	CMD4(CCC_Integer, "print_bone_warnings", &print_bone_warnings, 0, 1);
+
+	// Poltergeists spawn corpses on death
+	CMD4(CCC_Integer, "poltergeist_spawn_corpse_on_death", &poltergeist_spawn_corpse_on_death, 0, 1);
 
 	if (strstr(Core.Params, "-dbgdev"))
 		CMD4(CCC_Float, "g_streff", &streff, -10.f, 10.f);

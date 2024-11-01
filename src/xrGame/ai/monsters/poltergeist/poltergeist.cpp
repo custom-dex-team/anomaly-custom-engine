@@ -386,9 +386,10 @@ void CPoltergeist::net_Destroy()
 	ability()->on_destroy();
 }
 
+BOOL poltergeist_spawn_corpse_on_death = TRUE;
 void CPoltergeist::Die(CObject* who)
 {
-	if (m_tele)
+	if (poltergeist_spawn_corpse_on_death || m_tele)
 	{
 		if (state_invisible)
 		{
