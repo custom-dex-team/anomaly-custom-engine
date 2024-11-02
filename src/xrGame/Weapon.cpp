@@ -63,11 +63,11 @@ float CWeapon::SDS_Radius(bool alt) {
 	{
 		if (0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonScope) && m_scopes.size())
 		{
-			scope_tex_name = READ_IF_EXISTS(pSettings, r_string, GetScopeName(), alt ? "scope_texture_alt" : "scope_texture", NULL);
+			scope_tex_name = alt ? m_secondary_scope_tex_name : m_primary_scope_tex_name;
 		}
 		else
 		{
-			scope_tex_name = READ_IF_EXISTS(pSettings, r_string, cNameSect(), alt ? "scope_texture_alt" : "scope_texture", NULL);
+			scope_tex_name = alt ? m_secondary_scope_tex_name : m_primary_scope_tex_name;
 		}
 
 		if (scope_tex_name != 0) {
@@ -82,8 +82,7 @@ float CWeapon::SDS_Radius(bool alt) {
 		else {
 			return 0.0;
 		}
-	}
-	else {
+	} else {
 		return 0.0;
 	}
 }
@@ -353,24 +352,31 @@ void CWeapon::UpdateZoomParams() {
 
 void CWeapon::UpdateUIScope()
 {
-	UpdateZoomParams();
-
 	// Change or remove scope texture
 	shared_str scope_tex_name;
 	if (m_zoomtype == 0)
 	{
 		if (0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonScope) && m_scopes.size())
 		{
-			scope_tex_name = pSettings->r_string(GetScopeName(), "scope_texture");
+			if (!m_primary_scope_tex_name) {
+				m_primary_scope_tex_name = pSettings->r_string(GetScopeName(), "scope_texture");
+			}
+			scope_tex_name = m_primary_scope_tex_name;
 		}
 		else
 		{
-			scope_tex_name = READ_IF_EXISTS(pSettings, r_string, cNameSect(), "scope_texture", NULL);
+			if (!m_primary_scope_tex_name) {
+				m_primary_scope_tex_name = READ_IF_EXISTS(pSettings, r_string, cNameSect(), "scope_texture", NULL);
+			}
+			scope_tex_name = m_primary_scope_tex_name;
 		}
 	}
 	else if (m_zoomtype == 1)
 	{
-		scope_tex_name = READ_IF_EXISTS(pSettings, r_string, cNameSect(), "scope_texture_alt", NULL);
+		if (!m_secondary_scope_tex_name) {
+			m_secondary_scope_tex_name = READ_IF_EXISTS(pSettings, r_string, cNameSect(), "scope_texture_alt", NULL);
+		}
+		scope_tex_name = m_secondary_scope_tex_name;
 	}
 
 	if (!g_dedicated_server)
@@ -378,13 +384,16 @@ void CWeapon::UpdateUIScope()
 		xr_delete(m_UIScope);
 		scope_2dtexactive = 0; //crookr
 
-		if (!scope_tex_name || scope_tex_name.equal("none") || g_player_hud->m_adjust_mode)
-			return;
-
-		m_scope_tex_name = scope_tex_name;
-		m_UIScope = xr_new<CUIWindow>();
-		CUIXmlInit::InitWindow(*pWpnScopeXml, scope_tex_name.c_str(), 0, m_UIScope);
+		if (!scope_tex_name || scope_tex_name.equal("none") || g_player_hud->m_adjust_mode) {
+			//
+		} else {
+			m_scope_tex_name = scope_tex_name;
+			m_UIScope = xr_new<CUIWindow>();
+			CUIXmlInit::InitWindow(*pWpnScopeXml, scope_tex_name.c_str(), 0, m_UIScope);
+		}		
 	}
+
+	UpdateZoomParams();
 }
 
 void CWeapon::SetUIScope(LPCSTR scope_texture)

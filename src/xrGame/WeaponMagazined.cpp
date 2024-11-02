@@ -2007,6 +2007,20 @@ bool CWeaponMagazined::install_upgrade_impl(LPCSTR section, bool test)
 	}
 	result |= result2;
 
+	result2 = process_if_exists_set(section, "scope_texture", &CInifile::r_string, str, test);
+	if (result2 && !test)
+	{
+		m_primary_scope_tex_name = str;
+	}
+	result |= result2;
+
+	result2 = process_if_exists_set(section, "scope_texture_alt", &CInifile::r_string, str, test);
+	if (result2 && !test)
+	{
+		m_secondary_scope_tex_name = str;
+	}
+	result |= result2;
+
 	UpdateUIScope();
 
 	return result;
