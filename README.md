@@ -184,6 +184,9 @@ How to compile exes:
 6. For successful compilation, **the latest build tools with MFC and ATL libraries is required**
 
 ## Changelog
+**2024.11.04**
+* `level.map_get_object_spots_by_id(id)` to get all map object spots associated with `id`
+
 **2024.11.02**
 * Possibility to define `scope_texture` and `scope_texture_alt` in weapon upgrades
 

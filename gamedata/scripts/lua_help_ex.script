@@ -182,6 +182,11 @@
 
         CUIStatic* map_get_object_spot_static(u16 id, LPCSTR spot_type)
         CUIStatic* map_get_object_minimap_spot_static(u16 id, LPCSTR spot_type)
+        table map_get_object_spots_by_id(u16 id) // Returns array of tables
+        // {
+            spot_type: string, icon ID from map_spots XML
+            text: string, text when spot is hovered
+        // }
 
         add_bullet(Fvector pos, Fvector dir, float speed, float power, float impulse, u16 sender, ALife::EHitType hit_type, float max_dist, LPCSTR ammo_sect, float air_resistance)
 
