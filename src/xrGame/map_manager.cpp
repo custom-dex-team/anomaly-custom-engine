@@ -258,6 +258,18 @@ void CMapManager::GetMapLocations(const shared_str& spot_type, u16 id, xr_vector
 	}
 }
 
+// demonized: get all map locations by id
+void CMapManager::GetMapLocations(u16 id, xr_vector<CMapLocation*>& res)
+{
+	FindLocationByID key(id);
+	Locations_it it = std::find_if(Locations().begin(), Locations().end(), key);
+	while (it != Locations().end())
+	{
+		res.push_back((*it).location);
+		it = std::find_if(++it, Locations().end(), key);
+	}
+}
+
 void CMapManager::Update()
 {
 	delete_data(m_deffered_destroy_queue); //from prev frame

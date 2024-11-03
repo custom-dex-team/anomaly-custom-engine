@@ -30,6 +30,7 @@ public:
 	void RemoveMapLocation(CMapLocation* ml);
 	CMapLocation* GetMapLocation(const shared_str& spot_type, u16 id);
 	void GetMapLocations(const shared_str& spot_type, u16 id, xr_vector<CMapLocation*>& res);
+	void GetMapLocations(u16 id, xr_vector<CMapLocation*>& res);
 	void DisableAllPointers();
 	void ReloadSpots();
 	bool GetMapLocationsForObject(u16 id, xr_vector<CMapLocation*>& res);

@@ -404,6 +404,26 @@ CUIStatic* map_get_minimap_spot_static(u16 id, LPCSTR spot_type)
 	return map_spot_static;
 }
 
+luabind::object map_get_object_spots_by_id(u16 id)
+{
+	luabind::object table = luabind::newtable(ai().script_engine().lua());
+
+	auto result = xr_vector<CMapLocation*>();
+	Level().MapManager().GetMapLocations(id, result);
+
+	int i = 1;
+	for (CMapLocation* ml : result) {
+		luabind::object spot = luabind::newtable(ai().script_engine().lua());
+		spot["spot_type"] = ml->spot_type;
+		spot["text"] = ml->GetHint();
+
+		table[i] = spot;
+		i++;
+	}
+
+	return table;
+}
+
 u16 map_has_object_spot(u16 id, LPCSTR spot_type)
 {
 	return Level().MapManager().HasMapLocation(spot_type, id);
@@ -2158,6 +2178,7 @@ void CLevel::script_register(lua_State* L)
 			def("map_remove_all_object_spots", map_remove_all_object_spots),
 			def("map_get_object_spot_static", map_get_spot_static),
 			def("map_get_object_minimap_spot_static", map_get_minimap_spot_static),
+			def("map_get_object_spots_by_id", map_get_object_spots_by_id),
 
 			def("add_dialog_to_render", add_dialog_to_render),
 			def("remove_dialog_to_render", remove_dialog_to_render),
