@@ -184,6 +184,9 @@ How to compile exes:
 6. For successful compilation, **the latest build tools with MFC and ATL libraries is required**
 
 ## Changelog
+**2024.11.08**
+* Lucy, RavenAscendant, NLTP_ASHES: Transparency shader fix for detectors (https://github.com/nltp-ashes/Western-Goods/releases/tag/fix-vanilla-shader)
+
 **2024.11.04**
 * `level.map_get_object_spots_by_id(id)` to get all map object spots associated with `id`
 
