@@ -184,6 +184,9 @@ How to compile exes:
 6. For successful compilation, **the latest build tools with MFC and ATL libraries is required**
 
 ## Changelog
+**2024.11.09**
+* Temporary disabled cform_cache (https://github.com/themrdemonized/xray-monolith/issues/100)
+
 **2024.11.08**
 * Lucy, RavenAscendant, NLTP_ASHES: Transparency shader fix for detectors (https://github.com/nltp-ashes/Western-Goods/releases/tag/fix-vanilla-shader)
 
