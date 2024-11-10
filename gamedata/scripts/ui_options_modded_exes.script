@@ -55,6 +55,13 @@ function init_opt_base()
 				cmd = "new_zoom_enable",
 			},
 			{
+				id = "new_zoom_delta_algorithm",
+				type = "check",
+				val = 1,
+				def = false,
+				cmd = "new_zoom_delta_algorithm",
+			},
+			{
 				id = "zoom_step_count",
 				type = "track",
 				val = 2,
