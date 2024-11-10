@@ -29,6 +29,12 @@
 	<string id="ui_mm_modded_exes_new_zoom_enable">
 		<text>Shader Scopes плавный зум (new_zoom_enable)</text>
 	</string>
+	<string id="ui_mm_modded_exes_new_zoom_delta_algorithm">
+		<text>Shader Scopes новый алгоритм зума (new_zoom_delta_algorithm)</text>
+	</string>
+	<string id="ui_mm_modded_exes_new_zoom_delta_algorithm_desc">
+		<text>Меняет алгоритм изменения зума т.о. чтобы было одинаковое визуальное увеличение</text>
+	</string>
 	<string id="ui_mm_modded_exes_zoom_step_count">
 		<text>Shader Scopes кол-во стадий зума (zoom_step_count)</text>
 	</string>

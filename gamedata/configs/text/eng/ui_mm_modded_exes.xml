@@ -29,6 +29,12 @@
 	<string id="ui_mm_modded_exes_new_zoom_enable">
 		<text>Shader Scopes Smooth Zoom Change (new_zoom_enable)</text>
 	</string>
+	<string id="ui_mm_modded_exes_new_zoom_delta_algorithm">
+		<text>Shader Scopes New Zoom Delta Algorithm (new_zoom_delta_algorithm)</text>
+	</string>
+	<string id="ui_mm_modded_exes_new_zoom_delta_algorithm_desc">
+		<text>Changes zoom levels of a scope to have same Visual zoom change between levels</text>
+	</string>
 	<string id="ui_mm_modded_exes_zoom_step_count">
 		<text>Shader Scopes Smooth Zoom Step Count (zoom_step_count)</text>
 	</string>

@@ -839,6 +839,8 @@ void CWeapon::LoadFireParams(LPCSTR section)
 };
 
 void GetZoomData(const float scope_factor, const float zoom_step_count, float& delta, float& min_zoom_factor);
+void newGetZoomDelta(const float scope_factor, float& delta, const float min_zoom_factor, float steps);
+extern BOOL useNewZoomDeltaAlgorithm;
 
 void NewGetZoomData(const float scope_factor, const float zoom_step_count, float& delta, float& min_zoom_factor, float zoom, float min_zoom)
 {
@@ -855,6 +857,9 @@ void NewGetZoomData(const float scope_factor, const float zoom_step_count, float
 
 	float steps = zoom_step_count ? zoom_step_count : n_zoom_step_count;
 	delta = (min_zoom_factor - scope_factor) / steps;
+
+	if (useNewZoomDeltaAlgorithm)
+		newGetZoomDelta(scope_factor, delta, min_zoom_factor, steps);
 
 	//Msg("min zoom factor %f, min zoom %f, loc min zoom factor %f, g_ironsights_factor %f, scope_radius %f, scope_scrollpower %f, zoom_step_count %f, n_zoom_step_count %f, steps %f, delta %f", min_zoom_factor, min_zoom, loc_min_zoom_factor, g_ironsights_factor, scope_radius, scope_scrollpower, zoom_step_count, n_zoom_step_count, steps, delta);
 }
@@ -3035,17 +3040,20 @@ void CWeapon::ZoomInc()
 	if (!m_zoom_params.m_bUseDynamicZoom) return;
 	float delta, min_zoom_factor;
 	float power = scope_radius > 0.0 ? scope_scrollpower : 1;
-	//
+
 	if (zoomFlags.test(NEW_ZOOM)) {
 		NewGetZoomData(m_zoom_params.m_fScopeZoomFactor * power, m_zoom_params.m_fZoomStepCount, delta, min_zoom_factor, GetZoomFactor() * power, m_zoom_params.m_fMinBaseZoomFactor);
 	} else {
 		GetZoomData(m_zoom_params.m_fScopeZoomFactor * power, m_zoom_params.m_fZoomStepCount, delta, min_zoom_factor);
 	}
-	//
+
 	float f = GetZoomFactor() * power - delta;
+	if (useNewZoomDeltaAlgorithm)
+		f = GetZoomFactor() * power * delta;
+
 	clamp(f, m_zoom_params.m_fScopeZoomFactor * power, min_zoom_factor);
 	SetZoomFactor(f / power);
-	//
+
 	m_fRTZoomFactor = GetZoomFactor() * power;
 }
 
@@ -3055,17 +3063,20 @@ void CWeapon::ZoomDec()
 	if (!m_zoom_params.m_bUseDynamicZoom) return;
 	float delta, min_zoom_factor;
 	float power = scope_radius > 0.0 ? scope_scrollpower : 1;
-	//
+
 	if (zoomFlags.test(NEW_ZOOM)) {
 		NewGetZoomData(m_zoom_params.m_fScopeZoomFactor * power, m_zoom_params.m_fZoomStepCount, delta, min_zoom_factor, GetZoomFactor() * power, m_zoom_params.m_fMinBaseZoomFactor);
 	} else {
 		GetZoomData(m_zoom_params.m_fScopeZoomFactor * power, m_zoom_params.m_fZoomStepCount, delta, min_zoom_factor);
 	}
-	//
+
 	float f = GetZoomFactor() * power + delta;
+	if (useNewZoomDeltaAlgorithm)
+		f = GetZoomFactor() * power / delta;
+
 	clamp(f, m_zoom_params.m_fScopeZoomFactor * power, min_zoom_factor);
 	SetZoomFactor(f / power);
-	//
+	
 	m_fRTZoomFactor = GetZoomFactor() * power;
 }
 
