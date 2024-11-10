@@ -184,6 +184,9 @@ How to compile exes:
 6. For successful compilation, **the latest build tools with MFC and ATL libraries is required**
 
 ## Changelog
+**2024.11.10**
+* New Zoom Delta Algorithm: Changes zoom levels of a scope to have same Visual zoom change between levels, to enable it type `new_zoom_delta_algorithm 1` in console (https://github.com/themrdemonized/xray-monolith/issues/98)
+
 **2024.11.09**
 * Temporary disabled cform_cache (https://github.com/themrdemonized/xray-monolith/issues/100)
 
