@@ -56,9 +56,10 @@ function init_opt_base()
 			},
 			{
 				id = "new_zoom_delta_algorithm",
-				type = "check",
-				val = 1,
-				def = false,
+				type = "list",
+				val = 0,
+				curr = {function() return get_console_cmd(0, "new_zoom_delta_algorithm") end},
+				content = {function() return {{"1", "ON"}, {"0", "OFF"}} end},
 				cmd = "new_zoom_delta_algorithm",
 			},
 			{
