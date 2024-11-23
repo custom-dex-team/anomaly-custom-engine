@@ -46,11 +46,8 @@
 #define _realloc_dbg(p,s,x,f,l)  realloc(p,s)
 #endif
 #include <objbase.h>
-#ifndef __MINGW32__
-#include <atlconv.h>
-#else
 #define T2A(x) x
-#endif
+
 #include <mmsystem.h>
 
 #include "OpenAL32.h"
