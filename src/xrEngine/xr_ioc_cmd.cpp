@@ -1056,6 +1056,10 @@ void CCC_Register()
 	psMouseSens = 0.12f;
 	CMD4(CCC_Float, "mouse_sens", &psMouseSens, 0.001f, 0.6f);
 
+	// demonized: vertical mouse sens
+	psMouseSensVerticalK = 1.0f;
+	CMD4(CCC_Float, "mouse_sens_vertical", &psMouseSensVerticalK, 0.1f, 3.0f);
+
 	// Camera
 	CMD2(CCC_Float, "cam_inert", &psCamInert);
 	CMD2(CCC_Float, "cam_slide_inert", &psCamSlideInert);

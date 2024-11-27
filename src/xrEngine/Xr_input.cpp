@@ -13,6 +13,7 @@ IInputReceiver dummyController;
 
 ENGINE_API float psMouseSens = 1.f;
 ENGINE_API float psMouseSensScale = 1.f;
+ENGINE_API float psMouseSensVerticalK = 1.f;
 ENGINE_API Flags32 psMouseInvert = {FALSE};
 
 float stop_vibration_time = flt_max;

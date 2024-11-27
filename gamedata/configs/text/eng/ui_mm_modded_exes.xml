@@ -14,6 +14,10 @@
 		<text>OFF</text>
 	</string>
 
+	<string id="ui_mm_modded_exes_mouse_sens_vertical">
+		<text>Vertical Mouse Sensitivity Factor (mouse_sens_vertical)</text>
+	</string>
+
 	<string id="ui_mm_modded_exes_r__3Dfakescope">
 		<text>3D Shader Scopes Enable (r__3Dfakescope)</text>
 	</string>
