@@ -37,6 +37,7 @@
 
         mouse_wheel_change_weapon // Enable changing weapons with mouse wheel
         mouse_wheel_invert_zoom // Invert mouse wheel
+        mouse_sens_vertical [0.1; 3] // Vertical mouse sensitivity factor. The number is a multiplicative factor to overall mouse sensitivity, default 1
 
         string_table_error_msg // Print xml translation errors
         monster_stuck_fix // Enables fix of stuck monsters at the fps cost
@@ -45,8 +46,8 @@
         allow_outfit_control_inertion_factor 
         allow_weapon_control_inertion_factor // Weapon and outfit control_inertion_factor can affect mouse sens
         render_short_tracers // Tracers will be capped to their minimum length instead of not rendering 
-		
-		viewport_near [0.0, 1.0] // Adjust the camera near value
+        
+        viewport_near [0.0, 1.0] // Adjust the camera near value
 
         print_bone_warnings // Print warnings when using bone_position and bone_direction functions and encounter invalid bones
 
