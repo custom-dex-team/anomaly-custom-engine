@@ -184,6 +184,10 @@ How to compile exes:
 6. For successful compilation, **the latest build tools with MFC and ATL libraries is required**
 
 ## Changelog
+**2024.11.30**
+* Moved `_g.script` patches to separate script and added it into `script.ltx` load
+* RavenAscendant: alife_clone_weapon fix
+
 **2024.11.27**
 * Possibilty to change vertical mouse sensitivity factor by typing `mouse_sens_vertical` in console or in Modded Exes settings. The number is a multiplicative factor to overall mouse sensitivity, default 1
 
