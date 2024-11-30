@@ -572,7 +572,7 @@ _G.alife_clone_weapon = function(se_obj, section, parent_id)
         if m_data_se[se_obj.id] then
             m_data_se[se_obj_new.id] = {}
             copy_table(m_data_se[se_obj_new.id], m_data_se[se_obj.id])
-                        m_data_se[se_obj_new.id] = se_obj_new:name() -- alife_storage_manager uses name as validation incase se_unregister is missed. which can happen. 
+            m_data_se[se_obj_new.id].name = se_obj_new:name() -- alife_storage_manager uses name as validation incase se_unregister is missed. which can happen. 
         end
         
         -- Clone parts states
