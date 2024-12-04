@@ -1,0 +1,51 @@
+name: 'Build engine'
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  build-engine:
+    name: 'Build engine'
+
+    strategy:
+      matrix:
+        system:
+          - windows-latest
+        config:
+          - DX11
+        platform:
+          - x64
+
+    runs-on: ${{ matrix.system }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.3.1
+
+      - name: Build solution
+        run: |
+          msbuild `
+            ${{ github.workspace }}/src/engine-vs2022.sln `
+            -p:Configuration=${{ matrix.config }} `
+            -p:Platform=${{ matrix.platform }} `
+            -maxcpucount
+
+      - name: Upload binaries
+        uses: actions/upload-artifact@v4
+        with:
+          name: engine-binaries-${{ matrix.system }}-${{ matrix.platform }}-${{ matrix.config }}-${{ github.sha }}
+          path: _build/_game/bin_dbg/*.exe
